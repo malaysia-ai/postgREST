@@ -1,0 +1,16 @@
+# Systemd service file for postgrest daemon 
+
+[Unit]
+Description=label-studio daemon service for ubuntu user
+After=syslog.target network.target
+
+[Service]
+
+ExecStart=postgrest /home/ubuntu/postgREST/postgrest.conf
+ExecReload=/bin/kill -HUP $MAINPID
+
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=default.target
